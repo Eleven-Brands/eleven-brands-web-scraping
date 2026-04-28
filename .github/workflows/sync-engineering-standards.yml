@@ -14,11 +14,6 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  workflows: write
-
-concurrency:
-  group: sync-engineering-standards
-  cancel-in-progress: true
 
 concurrency:
   group: sync-engineering-standards
@@ -27,8 +22,6 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout consumer repo
         uses: actions/checkout@v6
@@ -63,7 +56,7 @@ jobs:
             - LICENSE
             - setup_gcp.md
             - setup_local_development.md
-            - .github (enforced from standards repo)
+            - .github (ISSUE_TEMPLATE, CODEOWNERS)
           labels: |
             automation
             docs
